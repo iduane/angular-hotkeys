@@ -18,7 +18,9 @@ module.exports = function(grunt) {
         report: 'gzip'
       },
       build: {
-        src: ['build/hotkeys.js', 'bower_components/mousetrap/mousetrap.js'],
+        src: ['build/hotkeys.js',
+          'node_modules/combokeys/Combokeys/index.js'
+        ],
         dest: 'build/hotkeys.min.js'
       }
     },
@@ -58,7 +60,7 @@ module.exports = function(grunt) {
       watch: {
         configFile: 'test/karma.conf.js',
         singleRun: false,
-        reporters: ['progress']  // Don't display coverage
+        reporters: ['progress'] // Don't display coverage
       }
     },
 
@@ -79,7 +81,9 @@ module.exports = function(grunt) {
         },
         files: {
           'build/hotkeys.css': 'src/hotkeys.css',
-          'build/hotkeys.js':  ['build/hotkeys.js', 'bower_components/mousetrap/mousetrap.js'],
+          'build/hotkeys.js': ['build/hotkeys.js',
+            'bower_components/mousetrap/mousetrap.js'
+          ],
         }
       }
     },
@@ -111,7 +115,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['jshint', 'karma:unit', 'ngAnnotate', 'uglify', 'cssmin', 'concat:build']);
+  grunt.registerTask('default', ['jshint', 'karma:unit', 'ngAnnotate',
+    'uglify', 'cssmin', 'concat:build'
+  ]);
   grunt.registerTask('test', ['karma:watch']);
   grunt.registerTask('build', ['default']);
 
