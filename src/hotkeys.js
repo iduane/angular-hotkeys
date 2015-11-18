@@ -428,13 +428,13 @@
                 // don't execute callback if the event was fired from inside an element listed in preventIn
                 for (var i = 0; i < preventIn.length; i++) {
                   if (preventIn[i] === nodeName) {
-                    // shouldExecute = false;
+                    shouldExecute = false;
                     if (scope.bubbleUpInputEventIn && scope.bubbleUpInputEventIn
-                      .indexOf(combo) === -1) {
+                      .indexOf(combo) > -1) {
+                      shouldExecute = true;
                       event.preventDefault();
-                      event.stopPropagation();
+                      // event.stopPropagation();
                     }
-                    break;
                   }
                 }
               }
