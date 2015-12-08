@@ -592,7 +592,7 @@
 
       function removeIframeDoc(doc) {
         for (var i = 0; i < iframeComboKeys.length; i++) {
-          if (iframeComboKeys[i].element === doc) {
+          if (iframeComboKeys[i].element === doc.documentElement) {
             iframeComboKeys[i].detach();
             iframeComboKeys.splice(i, 1);
             break;
